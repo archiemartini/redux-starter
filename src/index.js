@@ -12,6 +12,7 @@ store.subscribe(() => {
 
 
 store.dispatch(loadBugs())
+console.log("load", store.dispatch(loadBugs()))
 
 setTimeout(() => store.dispatch(assignBugToUser(1, 3)), 2000)
 // setTimeout(() => store.dispatch(loadBugs()), 2000)

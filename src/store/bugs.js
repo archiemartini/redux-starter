@@ -24,7 +24,7 @@ export const loadBugs = () => (dispatch, getState) => {
   const diffInMinutes = moment().diff(moment(lastFetch), 'minutes')
   if (diffInMinutes < 10) return;
 
-  dispatch(apiCallBegan({
+  return dispatch(apiCallBegan({
     url,
     onStart: bugsRequested.type,
     onSuccess: bugsReceived.type,
@@ -85,10 +85,6 @@ export default createReducer({list: [], loading: false, lastFetch: null}, {
   // actions: functions
   bugAdded: (state, action) => {
     state.list.push(action.payload)
-  },
-  bugRemoved: (state, action) => {
-    state.list.filter(bug => bug.id !== action.payload.id)
-    //why doesn't this work, Mosh???
   },
   bugResolved: (state, action) => {
     const index = state.list.findIndex(bug => bug.id === action.payload.id)
